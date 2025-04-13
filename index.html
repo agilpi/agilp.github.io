@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AGILP - Agile Help & AI Insight | Amitabh R Jha</title>
+    <meta name="description" content="AGILP (Agile + Help / AGI) by Amitabh R Jha. Agile coaching merging 20+ years of tech architecture (Cloud, IoT, AI) experience with AI insights to drive efficiency and business value.">
+    <!-- Favicon links (optional - generate from a tool like realfavicongenerator.net and link here if needed) -->
+    <!-- <link rel="icon" href="/favicon.ico" sizes="any"> -->
+    <!-- <link rel="apple-touch-icon" href="/apple-touch-icon.png"> -->
+
+    <style>
+        /* --- Base Styles & Variables --- */
+        :root {
+            --primary-color: #0056b3; /* A shade of blue */
+            --secondary-color: #4a90e2; /* Lighter blue */
+            --text-color: #333;
+            --light-text-color: #f8f8f8;
+            --background-color: #fff;
+            --alt-background-color: #f9f9f9;
+            --border-color: #ddd;
+            --header-height: 60px; /* Adjust as needed */
+        }
+
+        /* Basic Reset */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; } /* Smooth scrolling for nav links */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+        }
+        h1, h2, h3, h4, h5, h6 { margin-bottom: 0.75em; color: var(--primary-color); line-height: 1.3; }
+        h1 { font-size: 2.5rem; }
+        h2 { font-size: 2rem; margin-top: 1.5em; padding-top: 1em; border-top: 1px solid var(--border-color); }
+        section:first-of-type h2 { /* More specific selector for first section h2 */
+           margin-top: 0;
+           border-top: none;
+           padding-top: 0;
+        }
+        p { margin-bottom: 1em; }
+        a { color: var(--secondary-color); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        ul { list-style-position: inside; margin-bottom: 1em; padding-left: 1em;}
+        li { margin-bottom: 0.5em;}
+        strong { font-weight: 600; }
+
+        /* Container */
+        .container { max-width: 960px; margin: 0 auto; padding: 0 15px; }
+
+        /* --- Header & Navigation --- */
+        .site-header {
+            background-color: var(--background-color);
+            border-bottom: 1px solid var(--border-color);
+            position: fixed; /* Fixed header */
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            height: var(--header-height);
+        }
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+        }
+        .site-title { font-size: 1.8rem; font-weight: bold; color: var(--primary-color); }
+        .site-title:hover { text-decoration: none; }
+
+        .site-nav ul { list-style: none; display: flex; padding: 0; margin: 0; }
+        .site-nav li { margin-left: 1.5em; }
+        .site-nav a { color: var(--text-color); font-weight: 500; padding: 0.5em 0; }
+        .site-nav a:hover, .site-nav a.active { color: var(--primary-color); text-decoration: none; border-bottom: 2px solid var(--primary-color); }
+
+        #menu-toggle {
+            display: none; /* Hidden on desktop */
+            font-size: 1.8rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--primary-color);
+        }
+
+        /* --- Main Content & Sections --- */
+        main {
+            padding-top: var(--header-height); /* Offset for fixed header */
+        }
+        /* Use section direct child selector for padding to avoid affecting nested sections if any */
+        main > section {
+             padding: 3em 0;
+        }
+        main > section:first-of-type {
+             padding-top: 3em; /* Ensure first section below header has padding */
+        }
+        section h2 {
+            text-align: center;
+            margin-bottom: 1.5em;
+            /* Removed border-top and padding-top here, applied to section instead */
+        }
+        section.alt-bg { background-color: var(--alt-background-color); }
+
+
+        /* Hero Section Specific Styles (overrides section defaults if needed) */
+        #hero {
+            background-color: var(--primary-color);
+            color: var(--light-text-color);
+            padding: 5em 0; /* Specific padding */
+            text-align: center;
+        }
+        #hero h1 {
+             color: var(--light-text-color);
+             border-top: none; /* Ensure no border */
+             padding-top: 0;
+             margin-top: 0;
+             margin-bottom: 0.5em;
+             text-align: center; /* Ensure centered */
+        }
+        .hero-description { font-size: 1.2rem; margin-bottom: 1.5em; max-width: 700px; margin-left: auto; margin-right: auto;}
+        .cta-button {
+            display: inline-block;
+            background-color: var(--light-text-color);
+            color: var(--primary-color);
+            padding: 0.8em 1.8em;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .cta-button:hover {
+            background-color: var(--secondary-color);
+            color: var(--light-text-color);
+            text-decoration: none;
+        }
+
+        /* Blog Preview */
+        .blog-preview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+            gap: 1.5em;
+            margin-top: 2em;
+        }
+        .blog-post-preview {
+            background-color: var(--background-color);
+            padding: 1.5em;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+        }
+        .blog-post-preview h3 { margin-top: 0; font-size: 1.3rem; }
+
+        /* Contact Form */
+        .contact-form { max-width: 600px; margin: 2em auto 0 auto; }
+        .contact-form .form-group { margin-bottom: 1.5em; }
+        .contact-form label { display: block; margin-bottom: 0.5em; font-weight: 500; }
+        .contact-form input[type="text"],
+        .contact-form input[type="email"],
+        .contact-form textarea {
+            width: 100%;
+            padding: 0.8em;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        .contact-form textarea { min-height: 120px; }
+        .contact-form button {
+            display: inline-block;
+            padding: 0.8em 2em;
+            background-color: var(--primary-color);
+            color: var(--light-text-color);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .contact-form button:hover { background-color: var(--secondary-color); }
+
+        /* --- Footer --- */
+        .site-footer {
+            text-align: center;
+            margin-top: 3em;
+            padding: 2em 0;
+            background-color: var(--alt-background-color);
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: #777;
+        }
+        .site-footer p { margin-bottom: 0.5em; }
+        .site-footer a { color: #555; }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.7rem; }
+            #hero { padding: 3em 0; } /* Adjust hero padding on smaller screens */
+             main > section { padding: 2em 0; } /* Adjust general section padding */
+            .hero-description { font-size: 1rem; }
+
+            #menu-toggle { display: block; } /* Show hamburger */
+
+            .site-nav {
+                display: none; /* Hide nav by default */
+                position: absolute;
+                top: var(--header-height);
+                left: 0;
+                width: 100%;
+                background-color: var(--background-color);
+                border-bottom: 1px solid var(--border-color);
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            }
+            .site-nav.active { display: block; } /* Show nav when active */
+
+            .site-nav ul { flex-direction: column; } /* Stack vertically */
+            .site-nav li { margin: 0; text-align: center; border-bottom: 1px solid var(--border-color); }
+            .site-nav li:last-child { border-bottom: none; }
+            .site-nav a { display: block; padding: 1em; border-bottom: none; } /* Full width links */
+            .site-nav a:hover, .site-nav a.active { border-bottom: none; background-color: var(--alt-background-color); }
+        }
+    </style>
+
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container header-container">
+            <a class="site-title" href="#">AGILP</a>
+            <nav class="site-nav">
+                <ul>
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#vision">Vision</a></li>
+                    <li><a href="#mission">Mission</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <button id="menu-toggle" aria-label="Toggle Menu">☰</button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero"> <!-- Removed class="hero-section" as ID is specific enough -->
+            <div class="container">
+                <h1>Bridging Agile Expertise & AI's Future</h1>
+                <p class="hero-description">Merging 20 years of tech architecture insight with Agile coaching. Helping teams leverage AI to solve real business problems, not just tool problems.</p>
+                <a href="#contact" class="cta-button">Get In Touch</a>
+            </div>
+        </section>
+
+        <!-- Vision Section -->
+        <section id="vision">
+            <div class="container">
+                <h2>Vision: The Future is Efficient</h2>
+                <p>Software development is on the cusp of a massive transformation, driven by Generative AI. For too long, we've battled tool complexity and process friction. The future belongs to teams who solve <strong>business problems</strong> directly.</p>
+                <p>Imagine a plant manager capturing shop floor processes via video. Within hours, AI assists in creating a functional Digital Twin MVP, ready for feedback. This isn't science fiction; it's the efficiency AI enables. Developers, architects, and testers will focus on higher-value tasks: deep customer understanding, creative problem-solving, complex domain logic, and strategic thinking.</p>
+                <p>My vision is to help teams embrace this future – becoming faster, smarter, and more focused on delivering tangible business value. <strong>Let's fix business problems, not tool problems.</strong></p>
+            </div>
+        </section>
+
+        <!-- Mission Section -->
+        <section id="mission" class="alt-bg">
+            <div class="container">
+                <h2>Mission: Driving Agile Efficiency</h2>
+                <p>AGILP's mission is to empower organizations and professionals to navigate the evolving tech landscape with agility, efficiency, and foresight. Drawing on two decades of architecture experience (Cloud, Data, IoT, AI), I've seen firsthand how inefficiency and unclear requirements lead to waste.</p>
+                <p>As an Agile Coach, my mission is to:</p>
+                <ul>
+                    <li>Instill True Agility: Foster the mindset for rapid iteration and adaptation.</li>
+                    <li>Champion Simplicity: Cut complexity, advocate lean architectures, fight tech debt.</li>
+                    <li>Sharpen Requirements: Ensure clarity (DoR/DoD/BDD) linked to business outcomes (OKRs).</li>
+                    <li>Leverage AI Strategically: Help teams utilize AI/GenAI to automate and accelerate.</li>
+                    <li>Amplify Your Voice: Ensure valuable insights are heard and acted upon.</li>
+                </ul>
+                <p>The goal is to help you deliver successful, cost-effective solutions faster.</p>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about">
+            <div class="container">
+                <h2>About Amitabh R Jha</h2>
+                <p>With over 20 years shaping complex systems as a Solution Architect (Cloud, Data, IoT, AI, Autonomous Driving, Industry 4.0), I've been at the forefront of tech innovation. However, witnessing repeated project struggles due to inefficiency and unheard technical concerns fueled my transition to an <strong>Agile Coach</strong> in early 2024.</p>
+                <p>AGILP embodies my approach: combining deep <strong>Agile</strong> principles with practical <strong>Help</strong> grounded in architectural reality, while embracing the potential of <strong>Artificial General Intelligence (AGI)</strong>. I believe in building solutions that are simple, efficient, and value-focused.</p>
+                <p>Certified SAFe 6 Practitioner, Azure Solutions Architect Expert, TOGAF knowledgeable, MBA (MIS & Marketing). Innovator, published author, keynote speaker, committed to making a tangible difference.</p>
+                <p>Connect with me on <a href="https://www.linkedin.com/in/amitabhrjha/" target="_blank" rel="noopener noreferrer">LinkedIn</a>.</p>
+            </div>
+        </section>
+
+        <!-- Blog Preview Section -->
+        <section id="blog" class="alt-bg">
+            <div class="container">
+                <h2>AGILP Insights (Blog)</h2>
+                <p>Sharing thoughts, lessons learned, and perspectives on Agile, AI, technical challenges, and building efficient teams. Stay tuned for regular posts, or check my latest activity on <a href="https://www.linkedin.com/in/amitabhrjha/recent-activity/all/" target="_blank" rel="noopener noreferrer">LinkedIn</a>.</p>
+                <div class="blog-preview">
+                    <article class="blog-post-preview">
+                        <h3>From Architect to Agile Coach: Why I Made the Switch</h3>
+                        <p>Reflecting on the journey and the motivations behind focusing on process and people... <a href="https://www.linkedin.com/in/amitabhrjha/recent-activity/all/" target="_blank" rel="noopener noreferrer">[Read more on LinkedIn]</a></p>
+                    </article>
+                    <article class="blog-post-preview">
+                        <h3>GenAI's Real Impact on Software Development</h3>
+                        <p>Moving beyond the hype to see how AI is practically changing coding, testing, and requirements... <a href="https://www.linkedin.com/in/amitabhrjha/recent-activity/all/" target="_blank" rel="noopener noreferrer">[Read more on LinkedIn]</a></p>
+                    </article>
+                    <!-- Add more preview articles linking to LinkedIn or future blog posts -->
+                </div>
+                 <p>Full blog coming soon to agilp.org!</p>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <div class="container">
+                <h2>Get In Touch</h2>
+                <p>Interested in collaborating, discussing Agile transformation, leveraging AI in your SDLC, or need an experienced voice for speaking engagements? Use the form below or connect on <a href="https://www.linkedin.com/in/amitabhrjha/" target="_blank" rel="noopener noreferrer">LinkedIn</a>.</p>
+
+                <form action="https://formsubmit.co/comagilp@gmail.com" method="POST" class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject:</label>
+                        <input type="text" id="subject" name="_subject" placeholder="New message from AGILP website"> <!-- Optional: Prefill subject -->
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message:</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <!-- Formsubmit settings -->
+                    <input type="text" name="_honey" style="display:none"> <!-- Honeypot -->
+                    <input type="hidden" name="_captcha" value="false"> <!-- Disable reCAPTCHA if desired -->
+                    <input type="hidden" name="_next" value="https://agilp.org#contact?submitted=true"> <!-- Redirect back to contact section with parameter -->
+
+                    <button type="submit">Send Message</button>
+                </form>
+                 <p id="form-submission-message" style="display: none; color: green; margin-top: 1em;">Thank you for your message!</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>© <span id="current-year"></span> AGILP - Amitabh R Jha. All rights reserved.</p>
+            <p><a href="https://www.linkedin.com/in/amitabhrjha/" target="_blank" rel="noopener noreferrer">LinkedIn</a> | <a href="#hero">Back to Top</a></p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Mobile Menu Toggle ---
+            const menuToggle = document.getElementById('menu-toggle');
+            const siteNav = document.querySelector('.site-nav');
+            const navLinks = document.querySelectorAll('.site-nav a'); // Get all nav links
+
+            if (menuToggle && siteNav) {
+                menuToggle.addEventListener('click', () => {
+                    siteNav.classList.toggle('active'); // Toggle nav visibility
+                });
+            }
+
+            // --- Close Mobile Menu on Link Click ---
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    // Check if the link is an internal anchor link and the menu is active
+                    if (link.getAttribute('href').startsWith('#') && siteNav.classList.contains('active')) {
+                        siteNav.classList.remove('active'); // Hide nav after clicking an internal link
+                    }
+                });
+            });
+
+             // --- Close mobile menu if clicked outside ---
+            document.addEventListener('click', function(event) {
+                const isClickInsideNav = siteNav.contains(event.target);
+                const isClickOnToggle = menuToggle.contains(event.target);
+
+                if (!isClickInsideNav && !isClickOnToggle && siteNav.classList.contains('active')) {
+                    siteNav.classList.remove('active');
+                }
+            });
+
+
+            // --- Update Footer Year ---
+            const currentYearSpan = document.getElementById('current-year');
+            if (currentYearSpan) {
+                currentYearSpan.textContent = new Date().getFullYear();
+            }
+
+            // --- Form Submission Message (Optional) ---
+            // Check if the URL contains a query parameter indicating submission success
+            const urlParams = new URLSearchParams(window.location.search);
+            const submitted = urlParams.get('submitted');
+            const formMessage = document.getElementById('form-submission-message');
+
+            if (submitted === 'true' && formMessage) {
+                formMessage.style.display = 'block';
+                // Optional: Remove the query parameter from the URL without reloading for cleaner look
+                if (window.history.replaceState) {
+                   // Build the clean URL (protocol, host, path, hash)
+                   const cleanUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + window.location.hash;
+                   // Replace the current history state with the clean URL
+                   window.history.replaceState({path: cleanUrl}, '', cleanUrl);
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
