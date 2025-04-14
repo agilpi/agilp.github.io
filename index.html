@@ -107,14 +107,14 @@
         section.alt-bg { background-color: var(--alt-background-color); }
 
 
-        /* Hero Section Specific Styles (overrides section defaults if needed) */
-        #hero {
+        /* Home Section Specific Styles (overrides section defaults if needed) */
+        #home {
             background-color: var(--primary-color);
             color: var(--light-text-color);
             padding: 5em 0; /* Specific padding */
             text-align: center;
         }
-        #hero h1 {
+        #home h1 {
              color: var(--light-text-color);
              border-top: none; /* Ensure no border */
              padding-top: 0;
@@ -122,7 +122,7 @@
              margin-bottom: 0.5em;
              text-align: center; /* Ensure centered */
         }
-        .hero-description { font-size: 1.2rem; margin-bottom: 1.5em; max-width: 700px; margin-left: auto; margin-right: auto;}
+        .home-description { font-size: 1.2rem; margin-bottom: 1.5em; max-width: 700px; margin-left: auto; margin-right: auto;}
         .cta-button {
             display: inline-block;
             background-color: var(--light-text-color);
@@ -200,9 +200,9 @@
         @media (max-width: 768px) {
             h1 { font-size: 2rem; }
             h2 { font-size: 1.7rem; }
-            #hero { padding: 3em 0; } /* Adjust hero padding on smaller screens */
+            #home { padding: 3em 0; } /* Adjust home padding on smaller screens */
              main > section { padding: 2em 0; } /* Adjust general section padding */
-            .hero-description { font-size: 1rem; }
+            .home-description { font-size: 1rem; }
 
             #menu-toggle { display: block; } /* Show hamburger */
 
@@ -234,7 +234,7 @@
             <a class="site-title" href="#">AGILP</a>
             <nav class="site-nav">
                 <ul>
-                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#home">Home</a></li>
                     <li><a href="#vision">Vision</a></li>
                     <li><a href="#mission">Mission</a></li>
                     <li><a href="#about">About</a></li>
@@ -247,11 +247,11 @@
     </header>
 
     <main>
-        <!-- Hero Section -->
-        <section id="hero"> <!-- Removed class="hero-section" as ID is specific enough -->
+        <!-- Home Section -->
+        <section id="home"> <!-- Removed class="home-section" as ID is specific enough -->
             <div class="container">
                 <h1>Bridging Agile Expertise & AI's Future</h1>
-                <p class="hero-description">Merging 25 years of tech architecture insight with Agile coaching. Helping teams leverage AI to solve real business problems, not just tool problems.</p>
+                <p class="home-description">Merging 25 years of tech architecture insight with Agile coaching. Helping teams leverage AI to solve real business problems, not just tool problems.</p>
                 <a href="#contact" class="cta-button">Get In Touch</a>
             </div>
         </section>
@@ -369,7 +369,7 @@
     <footer class="site-footer">
         <div class="container">
             <p>© <span id="current-year"></span> AGILP - Amitabh R Jha. All rights reserved.</p>
-            <p><a href="https://www.linkedin.com/in/amitabhrjha/" target="_blank" rel="noopener noreferrer">LinkedIn</a> | <a href="#hero">Back to Top</a></p>
+            <p><a href="https://www.linkedin.com/in/amitabhrjha/" target="_blank" rel="noopener noreferrer">LinkedIn</a> | <a href="#home">Back to Top</a></p>
         </div>
     </footer>
 
